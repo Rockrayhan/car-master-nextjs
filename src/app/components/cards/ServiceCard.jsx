@@ -1,11 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const ServiceCard = ({ service }) => {
   console.log(service);
-  const { title, img, price, description } = service;
+  const { _id,title, img, price, description } = service;
   return (
     <div className="col-span-1 my-3">
+        <Link href={`/services/${_id}`}>
+        
       <div className="card bg-base-100 w-96 shadow-xl border-2 hover:border-primary cursor-pointer">
         <figure></figure>
         <div className="card-body">
@@ -30,6 +33,7 @@ const ServiceCard = ({ service }) => {
           </div>
         </div>
       </div>
+      </Link>
     </div>
   );
 };
