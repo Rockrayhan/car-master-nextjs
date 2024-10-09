@@ -118,7 +118,7 @@ const Navbar = () => {
               />
             </svg>
 
-            <a className="btn btn-outline btn-primary">Button</a>
+            <Link href="/login" className="btn btn-outline btn-primary">Login</Link>
           </div>
         </div>
       </div>

@@ -1,8 +1,15 @@
+"use client";
 import React from 'react';
 import Image from "next/image";
 import Link from "next/link";
 
 const LoginPage = () => {
+
+
+  const loginHandler = async () => {
+
+  }
+
     return (
         <div>
               <div className="flex justify-center gap-10 py-10">
@@ -33,7 +40,8 @@ const LoginPage = () => {
     />
   </div>
 
-  <div className="flex justify-center mt-10">
+<form  onSubmit={loginHandler}>
+<div className="flex justify-center mt-10">
     <div className="text-center">
       <button className="btn btn-primary w-full"> Sign up </button>
       <p className="my-3"> Or sign Up with </p>
@@ -64,6 +72,8 @@ const LoginPage = () => {
 
     </div>
   </div>
+</form>
+
 </div>
 </div>
         </div>

@@ -1,8 +1,29 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const signupPage = () => {
+
+
+  const signupHandler = async (e) => {
+    e.preventDefault() ;
+    const newUser = {
+      name:  e.target.name.value,
+      email:  e.target.email.value,
+      password:  e.target.password.value,
+    };
+    // console.log(newUser);
+    const resp = await fetch("http://localhost:3000/signup/api", {
+      method:"POST",
+      body: JSON.stringify(newUser),
+      headers:{
+        "content-type" : "application/json"
+      }
+    })
+    console.log(resp);
+  }
+
   return (
     <div className="">
       <div className="flex justify-center gap-10 py-10">
@@ -11,14 +32,16 @@ const signupPage = () => {
           <Image height={500} width={450} src="assets/images/login/login.svg" />
         </div>
 
-        <div className="border-2 border-gray-400 px-10 py-10 w-1/3">
+       
+       <div className="border-2 border-gray-400 px-10 py-10 w-1/3">
           <h1 className="text-3xl font-bold text-center my-6"> Sign Up </h1>
-
+          <form  onSubmit={signupHandler}>
           <div className="font-bold">
             <label> Name </label> <br />
             <input
               type="text"
               placeholder="Your Name"
+              name="name"
               className="input input-bordered w-full max-w-xs"
             />
           </div>
@@ -27,6 +50,7 @@ const signupPage = () => {
             <label> Email </label> <br />
             <input
               type="text"
+              name="email"
               placeholder="Your Email"
               className="input input-bordered w-full max-w-xs"
             />
@@ -35,6 +59,7 @@ const signupPage = () => {
           <div className="font-bold">
             <label> Password </label> <br />
             <input
+              name="password"
               type="text"
               placeholder="Password"
               className="input input-bordered w-full max-w-xs"
@@ -72,7 +97,9 @@ const signupPage = () => {
 
             </div>
           </div>
+          </form>
         </div>
+       
       </div>
     </div>
   );
