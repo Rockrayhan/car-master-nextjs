@@ -6,8 +6,9 @@ import React from "react";
 
 const Navbar = () => {
   const session = useSession();
-  console.log(session?.data?.user?.name);
+  console.log(session);
   const userName = session?.data?.user?.name;
+  const userImg = session?.data?.user?.image;
 
   return (
     <div className="bg-base-100 text-slate-900 font-bold">
@@ -89,18 +90,28 @@ const Navbar = () => {
                 d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
               />
             </svg>
-            <span> {userName} </span> 
+            {
+              session?.status == 'loading'  ? <span> Loading </span> : <span> {userName} </span>
+            }
+            {userImg && (
+              <span>
+                 
+                <Image
+                  src={userImg}
+                  height={50}
+                  width={50}
+                  className="rounded-full"
+                /> 
+              </span>
+            )}
             <Link href="/appointment" className="btn btn-outline btn-primary">
               Appointment
             </Link>
             {session?.data ? (
               <div>
-                 
-                
                 <button className="btn bg-red-400" onClick={() => signOut()}>
-                   
-                  Logout 
-                </button> 
+                  Logout
+                </button>
               </div>
             ) : (
               <Link href="/login" className="btn  btn-primary">

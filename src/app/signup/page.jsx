@@ -12,6 +12,7 @@ const signupPage = () => {
       name:  e.target.name.value,
       email:  e.target.email.value,
       password:  e.target.password.value,
+      image:  e.target.image.value,
     };
     // console.log(newUser);
     const resp = await fetch("http://localhost:3000/signup/api", {
@@ -29,7 +30,7 @@ const signupPage = () => {
       <div className="flex justify-center gap-10 py-10">
 
         <div className="py-10">
-          <Image height={500} width={450} src="assets/images/login/login.svg" />
+          <Image height={500} width={450} src="assets/images/login/login.svg" alt="Sign_UP"/>
         </div>
 
        
@@ -62,6 +63,16 @@ const signupPage = () => {
               name="password"
               type="text"
               placeholder="Password"
+              className="input input-bordered w-full max-w-xs"
+            />
+          </div>
+
+          <div className="font-bold">
+            <label> Image </label> <br />
+            <input
+              name="image"
+              type="text"
+              placeholder="Insert Image Link"
               className="input input-bordered w-full max-w-xs"
             />
           </div>
