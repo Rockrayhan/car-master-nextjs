@@ -1,12 +1,23 @@
 import React from 'react';
-import { services } from '../../../lib/services'; 
+import { getServiceDetails } from '@/services/getServices';
 
-const ServiceDetailsPage =  ({params}) => {
-    console.log(params._id);
-    // const details = await services(params.id) ;
-    // console.log(details);
+export const metadata = {
+    title : "Details",
+    description: "service Details Page"
+}
+
+const ServiceDetailsPage =  async ({params}) => {
+    const details = await getServiceDetails(params.id)
+    console.log(details);
     
-    const {title} = services.find( (service) => service._id == params.id ) ;
+    const { title, img, price, description, facility } = details.service ;
+    console.log(title);
+    
+
+    
+
+    // get single data manually 
+    // const {title} = services.find( (service) => service._id == params.id ) ;
 
     return (
         <div>

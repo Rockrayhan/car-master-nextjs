@@ -1,10 +1,15 @@
 import React from "react";
 // import { services } from '@/lib/services';
-import { services } from "../../lib/services";
+// import { services } from "../../lib/services";
 import ServiceCard from "./cards/ServiceCard";
+import { getServices } from "@/services/getServices";
 
-const Services = () => {
-  // console.log(services);
+
+
+
+const Services = async () => {
+  const {services} = await getServices() ;
+  
 
   return (
     <div className="h-100vh">
@@ -17,7 +22,7 @@ const Services = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
-        {services.map((service) => (
+        {services?.map((service) => (
           <ServiceCard service={service} key={service._id} />
         ))}
       </div>

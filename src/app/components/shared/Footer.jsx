@@ -8,7 +8,7 @@ const Footer = () => {
       <footer className="footer bg-slate-900  text-white  p-10">
         <aside>
           <Link href="/">
-            <Image src={"assets/logo.svg"} width={100} height={50} />
+            <Image src={"/assets/logo.svg"} width={100} height={50} />
           </Link>
           <p className="my-4">
             ACME Industries Ltd.

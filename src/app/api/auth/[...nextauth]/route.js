@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials" ;
 import bcrypt from "bcrypt";
 import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
+import FacebookProvider from "next-auth/providers/facebook"
 
 const handler = NextAuth({
     session : {
@@ -43,10 +44,35 @@ const handler = NextAuth({
           GitHubProvider({
             clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
             clientSecret: process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET
+          }),
+          FacebookProvider({
+            clientId: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID,
+            clientSecret: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_SECRET
           })
     ],
  
-    callbacks: {},
+    callbacks: {
+        async signIn({ user, account }) {
+            if(account.provider === "google"  || account.provider === "github"){
+                const {name, email, image} = user ;
+                try{
+                    const db = await connectDB();
+                    const userCollection = db.collection("users");
+                    const userExist = await userCollection.findOne({email}) ;
+                    if( !userExist ) {
+                        const res = await userCollection.insertOne(user);
+                        return user ;
+                    } else {
+                        return user ;
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            } else {
+                return user ;
+            }
+        }
+    },
     pages: {
         signIn: '/login',
     },

@@ -35,6 +35,7 @@ const SocialLogin = () => {
             height={55}
             width={55}
             src="https://e7.pngegg.com/pngimages/174/233/png-clipart-computer-icons-facebook-inc-social-media-logo-facebook-rectangle-logo-thumbnail.png"
+            onClick={() => handleSocialLogin("facebook")}
           /> */}
 
           {/* <Image
@@ -45,7 +46,7 @@ const SocialLogin = () => {
           /> */}
 
           <Image
-            className="rounded-full cursor-pointer"
+            className="rounded-full cursor-pointer hover:animate-bounce"
             height={55}
             width={55}
             src="https://e7.pngegg.com/pngimages/646/324/png-clipart-github-computer-icons-github-logo-monochrome-thumbnail.png"
