@@ -23,7 +23,7 @@ const SocialLogin = () => {
 
         <div className="flex gap-8 justify-center">
           <Image
-            className="rounded-full cursor-pointer hover:animate-bounce	"
+            className="rounded-full cursor-pointer hover:bg-primary hover:p-1"
             height={55}
             width={55}
             src="https://w7.pngwing.com/pngs/249/19/png-transparent-google-logo-g-suite-google-guava-google-plus-company-text-logo.png"
@@ -46,7 +46,7 @@ const SocialLogin = () => {
           /> */}
 
           <Image
-            className="rounded-full cursor-pointer hover:animate-bounce"
+            className="rounded-full cursor-pointer hover:bg-primary hover:p-1"
             height={55}
             width={55}
             src="https://e7.pngegg.com/pngimages/646/324/png-clipart-github-computer-icons-github-logo-monochrome-thumbnail.png"

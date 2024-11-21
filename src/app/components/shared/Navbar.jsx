@@ -6,8 +6,9 @@ import React from "react";
 
 const Navbar = () => {
   const session = useSession();
-  console.log(session);
+  // console.log(session);
   const userName = session?.data?.user?.name;
+  const firstName = userName?.split(" ")[0];
   const userImg = session?.data?.user?.image;
 
   return (
@@ -91,7 +92,7 @@ const Navbar = () => {
               />
             </svg>
             {
-              session?.status == 'loading'  ? <span> Loading </span> : <span> {userName} </span>
+              session?.status == 'loading'  ? <span> Loading </span> : <span> {firstName} </span>
             }
             {userImg && (
               <span>
@@ -136,7 +137,7 @@ const navItems = [
   },
   {
     title: "Services",
-    path: "/service",
+    path: "/services",
   },
   {
     title: "Blogs",

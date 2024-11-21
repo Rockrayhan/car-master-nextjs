@@ -7,6 +7,8 @@ import GitHubProvider from "next-auth/providers/github"
 import FacebookProvider from "next-auth/providers/facebook"
 
 const handler = NextAuth({
+    // secret used so that the login session stays.
+    secret: process.env.NEXT_PUBLIC_AUTH_SECRET ,
     session : {
         strategy : 'jwt',
         maxAge: 30 * 24 * 60 * 60
